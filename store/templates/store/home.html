@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Welcome to DjangoStore</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <h1>Welcome to DjangoStore</h1>
+    <img src="{% static 'images/logo.png' %}" alt="Logo" width="200">
+    
+    <h2>Products</h2>
+    {% for product in products %}
+        <p>{{ product.name }} - ${{ product.price }}</p>
+        {% if product.image %}
+            <img src="{{ product.image.url }}" width="100">
+        {% endif %}
+    {% empty %}
+        <p>No products available.</p>
+    {% endfor %}
+</body>
+</html>
